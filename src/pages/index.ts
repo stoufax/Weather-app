@@ -1,1 +1,1 @@
-export {};
+export { WeatherInfo } from './weather-info';

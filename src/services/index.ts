@@ -1,1 +1,1 @@
-export {};
+export { useGetWeathers } from './weather';

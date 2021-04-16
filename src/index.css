@@ -1,6 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  font-family: 'Roboto', sans-serif;
+#root {
+  min-height: 100vh;
+  display: flex;
 }
