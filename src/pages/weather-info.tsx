@@ -43,7 +43,7 @@ export function WeatherInfo() {
       const dateKeys = Object.keys(_.groupBy(data.list, (d) => new Date(d.dt * 1000).getDate()));
 
       const mapDateToTemperatureInfo = dateKeys.map((item) => ({
-        temp: averageTemperature(groupedByDate[item]),
+        temp: convertTemperatureValueByUnit(averageTemperature(groupedByDate[item]), unit),
         date: groupedByDate[item][0].dt_txt.split(' ')[0],
         key: item,
       }));
@@ -52,7 +52,7 @@ export function WeatherInfo() {
       setMapped(mapDateToTemperatureInfo);
       setTemperatureByDate(groupedByDate[dateKeys[0]]);
     }
-  }, [data]);
+  }, [data, unit]);
 
   const chartData = (groupedByDate[keyDate] || temperatureByDate).map((item: any) =>
     convertTemperatureValueByUnit(item.main.temp, unit)
