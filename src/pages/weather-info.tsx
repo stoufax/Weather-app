@@ -50,6 +50,7 @@ export function WeatherInfo() {
 
       setGroupedByDate(groupedByDate);
       setMapped(mapDateToTemperatureInfo);
+      setKeyDate(mapDateToTemperatureInfo[0].key);
       setTemperatureByDate(groupedByDate[dateKeys[0]]);
     }
   }, [data, unit]);
@@ -57,7 +58,7 @@ export function WeatherInfo() {
   const chartData = (groupedByDate[keyDate] || temperatureByDate).map((item: any) =>
     convertTemperatureValueByUnit(item.main.temp, unit)
   );
-  console.log(`classes`, classes);
+
   return (
     <Container maxWidth="lg">
       {isLoading ? (
