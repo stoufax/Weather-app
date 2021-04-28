@@ -57,7 +57,7 @@ export function WeatherInfo() {
   const chartData = (groupedByDate[keyDate] || temperatureByDate).map((item: any) =>
     convertTemperatureValueByUnit(item.main.temp, unit)
   );
-
+  console.log(`classes`, classes);
   return (
     <Container maxWidth="lg">
       {isLoading ? (
@@ -101,7 +101,10 @@ export function WeatherInfo() {
           <Grid container spacing={3} justify="center" wrap="wrap">
             {(currentData || []).map((item) => (
               <Grid item key={item.key}>
-                <Card className={classes.card} onClick={() => setKeyDate(item.key)}>
+                <Card
+                  className={`${classes.card} ${keyDate === item.key ? classes.selectedCard : ''}`}
+                  onClick={() => setKeyDate(item.key)}
+                >
                   <CardContent>
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                       Temp
@@ -153,5 +156,8 @@ const useStyles = makeStyles({
   },
   chartContainer: {
     marginTop: 50,
+  },
+  selectedCard: {
+    boxShadow: 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
   },
 });
